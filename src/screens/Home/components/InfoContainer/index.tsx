@@ -5,10 +5,9 @@ import { styles } from './styles';
 
 export function InfoContainer() {
     return (
-        <View>
+        <View style={styles.container}>
             <Text>Localização</Text>
-            <View>
-                <Text>Sensação térmica: </Text>
+            <View style={styles.infoContainer}>
                 <Text>Temp Max: </Text>
                 <Text>Temp Min: </Text>
                 <Text>Humidade: </Text>
