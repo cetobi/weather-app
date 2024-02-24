@@ -5,7 +5,7 @@ import { styles } from './styles';
 
 export function Header() {
     return (
-        <View>
+        <View style={styles.container}>
             <Text>Modo escuro</Text>
             <Text>Search...</Text>
         </View>
