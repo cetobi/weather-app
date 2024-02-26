@@ -3,15 +3,24 @@ import { View, Text } from 'react-native';
 
 import { styles } from './styles';
 
-export function InfoContainer() {
+interface Props {
+    name_location: string;
+    temp_max: number;
+    temp_min: number;
+    humidity: number;
+    wind_speed: number
+}
+
+export function InfoContainer(props: Props) {
+
     return (
         <View style={styles.container}>
-            <Text>Localização</Text>
+            <Text>{props.name_location}</Text>
             <View style={styles.infoContainer}>
-                <Text>Temp Max: </Text>
-                <Text>Temp Min: </Text>
-                <Text>Humidade: </Text>
-                <Text>Velocidade do vento: </Text>
+                <Text>Temp Max: {props.temp_max}</Text>
+                <Text>Temp Min: {props.temp_min}</Text>
+                <Text>Humidade: {props.humidity}</Text>
+                <Text>Vento: {Math.floor(props.wind_speed)}km/h</Text>
             </View>
         </View>
     )
