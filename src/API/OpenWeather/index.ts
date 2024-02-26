@@ -1,12 +1,11 @@
 import axios from 'axios'
-import { OPENWEATHER_API } from '@env'
 
-const weatherUrl = `https://api.openweathermap.org/data/2.5/weather?appid=${OPENWEATHER_API}&units=metric&lang=pt_br`
-const geocodingUrl = `http://api.openweathermap.org/geo/1.0/direct?appid=${OPENWEATHER_API}&limit=3`
+const weatherUrl = `https://api.openweathermap.org/data/2.5/weather?appid=${process.env.EXPO_PUBLIC_OPENWEATHER_API}&units=metric&lang=pt_br`
+const geocodingUrl = `http://api.openweathermap.org/geo/1.0/direct?appid=${process.env.EXPO_PUBLIC_OPENWEATHER_API}&limit=3`
 
-export async function openweather(y: number, x: number) {
+export async function openweather(lat: number, lon: number) {
     try {
-        const response = await axios.get(`${weatherUrl}&lat=${y}&lon=${x}`)
+        const response = await axios.get(`${weatherUrl}&lat=${lat}&lon=${lon}`)
         return response.data
     } catch (error) {
         console.log('Error openweather: ' + error)
