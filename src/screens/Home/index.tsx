@@ -3,7 +3,7 @@ import { View } from 'react-native';
 
 import * as Location from 'expo-location';
 
-import { openweather } from '../../API/OpenWeather';
+import { getCurrentWeather } from '../../API/OpenWeather';
 import { Header } from './components/Header';
 import { Main } from './components/Main';
 import { InfoContainer } from './components/InfoContainer';
@@ -28,7 +28,7 @@ export function Home() {
             console.log(latitude, longitude)
 
             const fetchWeather = async () => {
-                const location = await openweather(latitude, longitude)
+                const location = await getCurrentWeather(latitude, longitude)
                 setLocation(location)
                 console.log(location)
             }
