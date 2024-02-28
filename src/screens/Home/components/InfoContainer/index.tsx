@@ -4,12 +4,14 @@ import { View, Text } from 'react-native';
 import { styles } from './styles';
 import { CardInfo } from './CardInfo';
 
+interface DaysWeek {
+    day: string;
+    temperature: number;
+}
+
 interface Props {
     name_location: string;
-    temp_max: number;
-    temp_min: number;
-    humidity: number;
-    wind_speed: number
+    daysWeek: Array<DaysWeek>;
 }
 
 export function InfoContainer(props: Props) {
@@ -19,10 +21,10 @@ export function InfoContainer(props: Props) {
             <Text style={styles.text}>{props.name_location}</Text>
             <View style={styles.infoContainer}>
 
-                <CardInfo text="Max:" data={Math.floor(props.temp_max)} />
-                <CardInfo text="Min:" data={Math.floor(props.temp_min)} />
-                <CardInfo text="Umidade:" data={props.humidity} />
-                <CardInfo text="Vento:" data={Math.floor(props.wind_speed)} />
+                <CardInfo text={props.daysWeek[0].day} data={Math.floor(props.daysWeek[0].temperature)} />
+                <CardInfo text={props.daysWeek[1].day} data={Math.floor(props.daysWeek[1].temperature)} />
+                <CardInfo text={props.daysWeek[2].day} data={Math.floor(props.daysWeek[2].temperature)} />
+                <CardInfo text={props.daysWeek[3].day} data={Math.floor(props.daysWeek[3].temperature)} />
 
             </View>
         </View>

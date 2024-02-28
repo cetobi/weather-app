@@ -12,8 +12,7 @@ export function CardInfo(props: Props) {
     return (
         <View style={styles.container}>
             <Text>{props.text}</Text>
-            <Text>{props.data}</Text>
-            <Text>{props.data}</Text>
+            <Text>{props.data}º</Text>
         </View>
     )
 }

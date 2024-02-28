@@ -5,7 +5,7 @@ export const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         justifyContent: 'space-around',
-        height: '80%',
+        height: '65%',
         borderWidth: 1,
         borderRadius: 20,
         marginHorizontal: 5

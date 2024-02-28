@@ -7,8 +7,6 @@ export const styles = StyleSheet.create({
     borderTopWidth: 1,
     backgroundColor: '#aaa',
     height: '33%',
-    position: 'absolute',
-    bottom: 0,
   },
   infoContainer: {
     flexDirection: 'row',
