@@ -3,7 +3,7 @@ import { View } from 'react-native';
 
 import * as Location from 'expo-location';
 
-import { getCurrentWeather } from '../../API/OpenWeather';
+import { getCurrentWeather, getForecast } from '../../API/OpenWeather';
 import { Header } from './components/Header';
 import { Main } from './components/Main';
 import { InfoContainer } from './components/InfoContainer';
@@ -12,10 +12,10 @@ import { styles } from './styles';
 
 export function Home() {
     const [location, setLocation] = useState<any>();
+    const [daysWeek, setDaysWeek] = useState<any>();
 
     useEffect(() => {
         (async () => {
-
             let { status } = await Location.requestForegroundPermissionsAsync();
             if (status !== 'granted') {
                 console.log('Permission to access location was denied');
@@ -32,24 +32,32 @@ export function Home() {
                 setLocation(location)
                 console.log(location)
             }
+
+            const fetchForecast = async () => {
+                const daysWeek = await getForecast(latitude, longitude)
+                setDaysWeek(daysWeek)
+            }
             fetchWeather()
+            fetchForecast()
         })();
     }, []);
 
     return (
         <View style={styles.container}>
-            {location && (
+            {location && daysWeek && (
                 <>
                     <Header />
 
-                    <Main temp={location.main.temp} description={location.weather[0].description} />
+                    <Main
+                        temp={location.main.temp}
+                        temp_max={location.main.temp_max}
+                        temp_min={location.main.temp_min}
+                        description={location.weather[0].description}
+                    />
 
                     <InfoContainer
                         name_location={location.name}
-                        temp_max={location.main.temp_max}
-                        temp_min={location.main.temp_min}
-                        humidity={location.main.humidity}
-                        wind_speed={location.wind.speed * 3.6}
+                        daysWeek={daysWeek}
                     />
                 </>
             )}
